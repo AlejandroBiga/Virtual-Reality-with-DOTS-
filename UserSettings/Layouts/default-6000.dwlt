@@ -221,8 +221,8 @@ MonoBehaviour:
     y: 0
     width: 304
     height: 925
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 276, y: 76}
+  m_MaxSize: {x: 4001, y: 4026}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -376,8 +376,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Hierarchy\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 860
-    y: 87
+    x: 853
+    y: 24
     width: 279
     height: 899
   m_SerializedDataModeController:
@@ -442,8 +442,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Inspector\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 1608
-    y: 87
+    x: 1601
+    y: 24
     width: 303
     height: 899
   m_SerializedDataModeController:
@@ -491,8 +491,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Project\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 1141
-    y: 87
+    x: 1134
+    y: 24
     width: 465
     height: 899
   m_SerializedDataModeController:
@@ -536,7 +536,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 44920100
     m_LastClickedID: 102980
-    m_ExpandedIDs: 00000000409201005092010000ca9a3b
+    m_ExpandedIDs: 00000000ba150100
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -565,7 +565,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 
+    m_ExpandedIDs: 00000000ba150100
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -644,8 +644,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Game\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 8
-    y: 562
+    x: 0
+    y: 499
     width: 851
     height: 424
   m_SerializedDataModeController:
@@ -745,8 +745,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Scene\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 8
-    y: 87
+    x: 0
+    y: 24
     width: 851
     height: 449
   m_SerializedDataModeController:
@@ -1303,7 +1303,7 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: 2.1714594, y: 1.6443907, z: -2.1375294}
+    m_Target: {x: 1.7080956, y: 2.6926177, z: 1.3321086}
     speed: 2
     m_Value: {x: 2.1714594, y: 1.6443907, z: -2.1375294}
   m_RenderMode: 0
@@ -1351,11 +1351,11 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.105381474, y: 0.49414465, z: -0.060490828, w: -0.86085004}
+    m_Target: {x: -0.09309142, y: 0.9063913, z: -0.27473825, w: -0.3071222}
     speed: 2
-    m_Value: {x: -0.10538116, y: 0.4941432, z: -0.06049065, w: -0.8608475}
+    m_Value: {x: -0.10538148, y: 0.49414468, z: -0.060490828, w: -0.86085004}
   m_Size:
-    m_Target: 0.29246393
+    m_Target: 0.8660254
     speed: 2
     m_Value: 0.29246393
   m_Ortho:
