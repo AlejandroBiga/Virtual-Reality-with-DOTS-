@@ -61,16 +61,16 @@
     <Analyzer Include="D:\unity 6 2.9f1\6000.2.9f1\6000.2.9f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\JetXR\UI Kit For Vision Pro OS\Runtime\Scripts\Components\Grabber.cs" />
-    <Compile Include="Assets\JetXR\UI Kit For Vision Pro OS\Runtime\Scripts\Components\WindowsStacker.cs" />
-    <Compile Include="Assets\JetXR\UI Kit For Vision Pro OS\Runtime\Scripts\Components\ToggleAnimation.cs" />
-    <Compile Include="Assets\JetXR\UI Kit For Vision Pro OS\Runtime\Scripts\Components\ShadowPlacer.cs" />
-    <Compile Include="Assets\JetXR\UI Kit For Vision Pro OS\Runtime\Scripts\Components\Resizer.cs" />
     <Compile Include="Assets\JetXR\UI Kit For Vision Pro OS\Runtime\Scripts\Components\ProgressBar.cs" />
     <Compile Include="Assets\JetXR\UI Kit For Vision Pro OS\Runtime\Scripts\Components\UpdateChildTogglesOnAwake.cs" />
     <Compile Include="Assets\JetXR\UI Kit For Vision Pro OS\Runtime\Scripts\Components\SpriteNumberSwitcher.cs" />
     <Compile Include="Assets\JetXR\UI Kit For Vision Pro OS\Runtime\Scripts\Components\TabbarAnimation.cs" />
     <Compile Include="Assets\JetXR\UI Kit For Vision Pro OS\Runtime\Scripts\Components\ListElement.cs" />
+    <Compile Include="Assets\JetXR\UI Kit For Vision Pro OS\Runtime\Scripts\Components\Grabber.cs" />
+    <Compile Include="Assets\JetXR\UI Kit For Vision Pro OS\Runtime\Scripts\Components\WindowsStacker.cs" />
+    <Compile Include="Assets\JetXR\UI Kit For Vision Pro OS\Runtime\Scripts\Components\ToggleAnimation.cs" />
+    <Compile Include="Assets\JetXR\UI Kit For Vision Pro OS\Runtime\Scripts\Components\ShadowPlacer.cs" />
+    <Compile Include="Assets\JetXR\UI Kit For Vision Pro OS\Runtime\Scripts\Components\Resizer.cs" />
     <Compile Include="Assets\JetXR\UI Kit For Vision Pro OS\Runtime\Scripts\VisionControls.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -578,7 +578,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Collections.LowLevel.ILSupport">
-      <HintPath>Library\PackageCache\com.unity.collections@aea9d3bd5e19\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.collections@14e905e9bd30\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="nunit.framework">
@@ -590,7 +590,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="System.IO.Hashing">
-      <HintPath>Library\PackageCache\com.unity.collections@aea9d3bd5e19\Unity.Collections.Tests\System.IO.Hashing\System.IO.Hashing.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.collections@14e905e9bd30\Unity.Collections.Tests\System.IO.Hashing\System.IO.Hashing.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
@@ -598,11 +598,15 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Mono.Cecil">
-      <HintPath>Library\PackageCache\com.unity.nuget.mono-cecil@d78732e851eb\Mono.Cecil.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.nuget.mono-cecil@ecb9724e46ff\Mono.Cecil.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System.Runtime.CompilerServices.Unsafe">
-      <HintPath>Library\PackageCache\com.unity.collections@aea9d3bd5e19\Unity.Collections.Tests\System.Runtime.CompilerServices.Unsafe\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.collections@14e905e9bd30\Unity.Collections.Tests\System.Runtime.CompilerServices.Unsafe\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Cecil.Awesome">
+      <HintPath>Library\PackageCache\com.unity.entities@8cc175c78756\Unity.Entities.CodeGen\Unity.Cecil.Awesome.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Android.Types">
