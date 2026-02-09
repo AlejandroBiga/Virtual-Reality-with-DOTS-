@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 0dd640088fc2cb54788839be4c7f296f
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - planeManager: {instanceID: 0}
+  - prefabToSpawn: {fileID: 919132149155446097, guid: 7d7a49c0f4018c842a618fecd8ba3071, type: 3}
+  - ghostMaterial: {fileID: 2100000, guid: a4ab2e023d56fe54c8cdf5f0f0bc4d7d, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
