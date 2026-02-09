@@ -100,7 +100,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 100}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 15
+  controlID: 4162
   draggingID: 0
 --- !u!114 &5
 MonoBehaviour:
@@ -147,7 +147,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 100}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 16
+  controlID: 26
   draggingID: 0
 --- !u!114 &7
 MonoBehaviour:
@@ -396,7 +396,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: e4ebffffeeebffff1eedffff24edffffb0eeffffb6eeffff0cfbffffc4150100de150100
+      m_ExpandedIDs: 0cfbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -517,7 +517,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Materials
+    - Assets/russian_buildings/prefabs/buildings
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -527,16 +527,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Materials
+  - Assets/russian_buildings/prefabs/buildings
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\unity proyects\Virtual-Reality-with-DOTS-
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 7a190100
-    m_LastClickedID: 72058
-    m_ExpandedIDs: 00000000ca190100
+    m_SelectedIDs: 64340100
+    m_LastClickedID: 78948
+    m_ExpandedIDs: 00000000681e0100
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -565,7 +565,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000ca190100
+    m_ExpandedIDs: 00000000681e0100
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -619,7 +619,7 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
-    m_ScrollPosition: {x: 0, y: 0}
+    m_ScrollPosition: {x: 0, y: 60}
     m_GridSize: 64
   m_SkipHiddenPackages: 0
   m_DirectoriesAreaWidth: 169
@@ -1303,9 +1303,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: 16.629723, y: 86.69076, z: 244.64725}
+    m_Target: {x: -3.4141935e+28, y: 1.3623081e+25, z: -2.565161e+28}
     speed: 2
-    m_Value: {x: 16.629723, y: 86.69076, z: 244.64725}
+    m_Value: {x: -3.4141935e+28, y: 1.3623081e+25, z: -2.565161e+28}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1351,17 +1351,17 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.031685308, y: -0.96650565, z: 0.2084197, w: 0.1466644}
+    m_Target: {x: -0.33068985, y: -0.29646942, z: -0.1104361, w: 0.88919264}
     speed: 2
-    m_Value: {x: -0.03168394, y: 0.9664639, z: -0.2084107, w: -0.14665806}
+    m_Value: {x: 0.33068985, y: 0.29646942, z: 0.11043609, w: -0.8891926}
   m_Size:
-    m_Target: 40.945946
+    m_Target: 56.834908
     speed: 2
-    m_Value: 40.945946
+    m_Value: 56.834908
   m_Ortho:
-    m_Target: 0
+    m_Target: 1
     speed: 2
-    m_Value: 0
+    m_Value: 1
   m_CameraSettings:
     m_Speed: 1
     m_SpeedNormalized: 0.5
