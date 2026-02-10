@@ -77,6 +77,7 @@
     <Compile Include="Assets\Samples\Universal Render Pipeline\17.2.0\URP Package Samples\RendererFeatures\DistortTunnel\DistortTunnelPass_Distort.cs" />
     <Compile Include="Assets\Samples\Universal Render Pipeline\17.2.0\URP Package Samples\RendererFeatures\DepthBlit\DepthBlitFeature.cs" />
     <Compile Include="Assets\Samples\Universal Render Pipeline\17.2.0\URP Package Samples\LensFlares\Scripts\ScreenSpacePlacement.cs" />
+    <Compile Include="Assets\Realistic Tree\Demo Scene\Buttonscript.cs" />
     <Compile Include="Assets\Scrit Guidp\EscaladorGuido.cs" />
     <Compile Include="Assets\Samples\Universal Render Pipeline\17.2.0\URP Package Samples\RendererFeatures\DepthBlit\DepthBlitCopyDepthPass.cs" />
     <Compile Include="Assets\Scrit Guidp\rotato.cs" />
@@ -90,6 +91,7 @@
     <Compile Include="Assets\Scrit Guidp\FPS.cs" />
     <Compile Include="Assets\Scripts\ARBoundingBoxColorizer.cs" />
     <Compile Include="Assets\Scrit Guidp\Grabber2.cs" />
+    <Compile Include="Assets\Realistic Tree\Demo Scene\Rotate.cs" />
     <Compile Include="Assets\Samples\Universal Render Pipeline\17.2.0\URP Package Samples\RendererFeatures\DepthBlit\DepthBlitDepthOnlyPass.cs" />
     <Compile Include="Assets\LudicWorlds\DebugPanel\DebugPanel.cs" />
     <Compile Include="Assets\Samples\Universal Render Pipeline\17.2.0\URP Package Samples\RendererFeatures\DistortTunnel\DistortTunnelPass_CopyColor.cs" />
