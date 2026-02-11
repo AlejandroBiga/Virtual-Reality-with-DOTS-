@@ -79,6 +79,7 @@
     <Compile Include="Assets\Samples\Universal Render Pipeline\17.2.0\URP Package Samples\LensFlares\Scripts\ScreenSpacePlacement.cs" />
     <Compile Include="Assets\Scrit Guidp\EscaladorGuido.cs" />
     <Compile Include="Assets\DOTS\VehicleMovementSystem.cs" />
+    <Compile Include="Assets\DOTS\VehicleInitSystem.cs" />
     <Compile Include="Assets\Samples\Universal Render Pipeline\17.2.0\URP Package Samples\RendererFeatures\DepthBlit\DepthBlitCopyDepthPass.cs" />
     <Compile Include="Assets\Scrit Guidp\rotato.cs" />
     <Compile Include="Assets\DOTS\VehicleAuthoring.cs" />
@@ -89,6 +90,7 @@
     <Compile Include="Assets\Scrit Guidp\SpawnMesa.cs" />
     <Compile Include="Assets\Samples\Universal Render Pipeline\17.2.0\URP Package Samples\CameraStacking\3D Skybox\Scripts\SkyboxCamera.cs" />
     <Compile Include="Assets\Samples\Universal Render Pipeline\17.2.0\URP Package Samples\RendererFeatures\BlitToRTHandle\BlitToRTHandlePass.cs" />
+    <Compile Include="Assets\DOTS\RouteID.cs" />
     <Compile Include="Assets\Scrit Guidp\FPS.cs" />
     <Compile Include="Assets\Scripts\ARBoundingBoxColorizer.cs" />
     <Compile Include="Assets\DOTS\VehicleProgress.cs" />
