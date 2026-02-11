@@ -6,7 +6,7 @@ public class VehicleAuthoring : MonoBehaviour
 {
     [Header("Vehicle Settings")]
     public float MaxSpeed = 5f;
-    public float DetectionDistance = 8f;  // Aumentado para mejor detección
+    public float DetectionDistance = 8f;  
     public float StopDistance = 2f;
 
     [Header("Route Waypoints")]
@@ -16,7 +16,7 @@ public class VehicleAuthoring : MonoBehaviour
     public Transform Waypoint3;
 
     [Header("Route")]
-    public int RouteID = 0;  // Para tener múltiples rutas si querés
+    public int RouteID = 0; 
 
     class Baker : Baker<VehicleAuthoring>
     {
