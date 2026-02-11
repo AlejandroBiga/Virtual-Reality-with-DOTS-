@@ -11,7 +11,6 @@ partial struct VehicleMovementSystem : ISystem
     {
         float deltaTime = SystemAPI.Time.DeltaTime;
 
-        // Obtener todos los vehículos para detección
         var vehicleQuery = SystemAPI.QueryBuilder()
             .WithAll<Vehicle, VehicleProgress, LocalTransform, RouteWaypoints>()
             .Build();
@@ -55,14 +54,13 @@ partial struct VehicleJob : IJobEntity
         in RouteWaypoints waypoints,
         [EntityIndexInQuery] int entityIndex)
     {
-        // Obtener waypoint actual y siguiente
+        
         float3 currentWP = GetWaypoint(waypoints, vehicle.CurrentWaypoint);
         float3 nextWP = GetWaypoint(waypoints, (vehicle.CurrentWaypoint + 1) % 4);
 
         float3 direction = math.normalize(nextWP - currentWP);
         float segmentLength = math.distance(currentWP, nextWP);
 
-        // DETECCIÓN: Revisar si hay otro auto adelante
         float currentSpeed = vehicle.MaxSpeed;
 
         for (int i = 0; i < AllVehicles.Length; i++)
@@ -74,10 +72,8 @@ partial struct VehicleJob : IJobEntity
             var otherTransform = AllTransforms[i];
             var otherWaypoints = AllWaypoints[i];
 
-            // Solo revisar si está en la misma ruta (mismo waypoint 0)
             if (!math.all(otherWaypoints.Point0 == waypoints.Point0)) continue;
 
-            // Si está en el mismo segmento
             if (other.CurrentWaypoint == vehicle.CurrentWaypoint)
             {
                 float distAhead = otherProgress.DistanceToNextWaypoint - progress.DistanceToNextWaypoint;
@@ -86,17 +82,17 @@ partial struct VehicleJob : IJobEntity
                 {
                     if (distAhead < vehicle.StopDistance)
                     {
-                        currentSpeed = 0;  // Detenerse
+                        currentSpeed = 0;  
                     }
                     else
                     {
-                        // Frenar gradualmente
+                       
                         currentSpeed = vehicle.MaxSpeed * (distAhead / vehicle.DetectionDistance);
                     }
                     break;
                 }
             }
-            // Si está en el waypoint siguiente (adelante pero en otro segmento)
+            
             else if (other.CurrentWaypoint == (vehicle.CurrentWaypoint + 1) % 4)
             {
                 float distToEnd = segmentLength - progress.DistanceToNextWaypoint;
@@ -119,23 +115,20 @@ partial struct VehicleJob : IJobEntity
 
         vehicle.Speed = currentSpeed;
 
-        // MOVIMIENTO
+        
         progress.DistanceToNextWaypoint += vehicle.Speed * DeltaTime;
 
-        // Si llegó al waypoint, pasar al siguiente
         if (progress.DistanceToNextWaypoint >= segmentLength)
         {
             progress.DistanceToNextWaypoint = 0;
             vehicle.CurrentWaypoint = (vehicle.CurrentWaypoint + 1) % 4;
 
-            // Actualizar waypoints para próxima iteración
             currentWP = GetWaypoint(waypoints, vehicle.CurrentWaypoint);
             nextWP = GetWaypoint(waypoints, (vehicle.CurrentWaypoint + 1) % 4);
             direction = math.normalize(nextWP - currentWP);
             segmentLength = math.distance(currentWP, nextWP);
         }
 
-        // ACTUALIZAR POSICIÓN
         float t = progress.DistanceToNextWaypoint / segmentLength;
         transform.Position = math.lerp(currentWP, nextWP, t);
         transform.Rotation = quaternion.LookRotationSafe(direction, math.up());

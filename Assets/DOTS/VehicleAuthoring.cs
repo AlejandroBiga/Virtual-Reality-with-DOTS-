@@ -1,4 +1,5 @@
 using Unity.Entities;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class VehicleAuthoring : MonoBehaviour
@@ -14,24 +15,33 @@ public class VehicleAuthoring : MonoBehaviour
     public Transform Waypoint2;
     public Transform Waypoint3;
 
+    [Header("Starting Position")]
+    [Range(0, 3)] public int StartingWaypoint = 0;  // En qué waypoint empieza (0, 1, 2, 3)
+    [Range(0f, 1f)] public float StartingProgress = 0f;  // Qué tan avanzado en ese segmento (0 = inicio, 1 = final)
+
     class Baker : Baker<VehicleAuthoring>
     {
         public override void Bake(VehicleAuthoring authoring)
         {
             var entity = GetEntity(TransformUsageFlags.Dynamic);
 
+            // Calcular distancia del segmento inicial
+            float3 currentWP = GetWaypointPosition(authoring, authoring.StartingWaypoint);
+            float3 nextWP = GetWaypointPosition(authoring, (authoring.StartingWaypoint + 1) % 4);
+            float segmentLength = math.distance(currentWP, nextWP);
+
             AddComponent(entity, new Vehicle
             {
                 Speed = authoring.MaxSpeed,
                 MaxSpeed = authoring.MaxSpeed,
-                CurrentWaypoint = 0,
+                CurrentWaypoint = authoring.StartingWaypoint,
                 DetectionDistance = authoring.DetectionDistance,
                 StopDistance = authoring.StopDistance
             });
 
             AddComponent(entity, new VehicleProgress
             {
-                DistanceToNextWaypoint = 0
+                DistanceToNextWaypoint = authoring.StartingProgress * segmentLength
             });
 
             AddComponent(entity, new RouteWaypoints
@@ -41,6 +51,18 @@ public class VehicleAuthoring : MonoBehaviour
                 Point2 = authoring.Waypoint2.position,
                 Point3 = authoring.Waypoint3.position
             });
+        }
+
+        static float3 GetWaypointPosition(VehicleAuthoring authoring, int index)
+        {
+            switch (index)
+            {
+                case 0: return authoring.Waypoint0.position;
+                case 1: return authoring.Waypoint1.position;
+                case 2: return authoring.Waypoint2.position;
+                case 3: return authoring.Waypoint3.position;
+                default: return authoring.Waypoint0.position;
+            }
         }
     }
 }
