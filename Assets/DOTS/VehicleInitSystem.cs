@@ -10,8 +10,6 @@ partial struct VehicleInitSystem : ISystem
     public void OnUpdate(ref SystemState state)
     {
         if (initialized) return;
-
-        // Agrupar vehículos por RouteID
         var vehicleQuery = SystemAPI.QueryBuilder()
             .WithAll<Vehicle, VehicleProgress, RouteWaypoints, RouteID>()
             .Build();
@@ -22,7 +20,6 @@ partial struct VehicleInitSystem : ISystem
         var waypoints = vehicleQuery.ToComponentDataArray<RouteWaypoints>(Allocator.Temp);
         var routeIDs = vehicleQuery.ToComponentDataArray<RouteID>(Allocator.Temp);
 
-        // Calcular perímetro total de la ruta (asumiendo que todos tienen la misma)
         if (waypoints.Length > 0)
         {
             var wp = waypoints[0];
@@ -32,15 +29,12 @@ partial struct VehicleInitSystem : ISystem
                 math.distance(wp.Point2, wp.Point3) +
                 math.distance(wp.Point3, wp.Point0);
 
-            // Espaciar autos uniformemente
             int count = entities.Length;
             float spacing = totalLength / count;
 
             for (int i = 0; i < count; i++)
             {
                 float targetDistance = i * spacing;
-
-                // Determinar en qué segmento va y a qué distancia
                 float seg0 = math.distance(wp.Point0, wp.Point1);
                 float seg1 = math.distance(wp.Point1, wp.Point2);
                 float seg2 = math.distance(wp.Point2, wp.Point3);
