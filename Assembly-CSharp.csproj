@@ -115,6 +115,7 @@
     <Compile Include="Assets\Samples\Universal Render Pipeline\17.2.0\URP Package Samples\RendererFeatures\KeepFrame\KeepFrameFeature.cs" />
     <Compile Include="Assets\Samples\Universal Render Pipeline\17.2.0\URP Package Samples\RendererFeatures\BlitToRTHandle\BlitToRTHandleRendererFeature.cs" />
     <Compile Include="Assets\DOTS\NPC dots system\NPCAnimationSystem.cs" />
+    <Compile Include="Assets\DOTS\NPC dots system\NPCAnimationSpeed1.cs" />
     <Compile Include="Assets\Samples\Universal Render Pipeline\17.2.0\URP Package Samples\SharedAssets\Scripts\CheckAssignedRenderPipelineAsset.cs" />
     <Compile Include="Assets\Scrit Guidp\attacher.cs" />
     <Compile Include="Assets\DOTS\NPC dots system\NPCMovementSystem.cs" />
