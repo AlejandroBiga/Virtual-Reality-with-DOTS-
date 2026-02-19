@@ -111,6 +111,7 @@
     <Compile Include="Assets\Scripts\ARPlaneColorizer.cs" />
     <Compile Include="Assets\Scrit Guidp\MaterialChanger.cs" />
     <Compile Include="Assets\JetXR\UI Kit For Vision Pro OS\Demo\Scripts\WindowSpawner.cs" />
+    <Compile Include="Assets\DOTS\script menu.cs" />
     <Compile Include="Assets\DOTS\NPC dots system\NPCAnimationSpeed.cs" />
     <Compile Include="Assets\Samples\Universal Render Pipeline\17.2.0\URP Package Samples\RendererFeatures\KeepFrame\KeepFrameFeature.cs" />
     <Compile Include="Assets\Samples\Universal Render Pipeline\17.2.0\URP Package Samples\RendererFeatures\BlitToRTHandle\BlitToRTHandleRendererFeature.cs" />
