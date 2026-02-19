@@ -78,6 +78,7 @@
     <Compile Include="Assets\DOTS\NPC dots system\NPCProgress.cs" />
     <Compile Include="Assets\Samples\Universal Render Pipeline\17.2.0\URP Package Samples\RendererFeatures\DepthBlit\DepthBlitFeature.cs" />
     <Compile Include="Assets\Samples\Universal Render Pipeline\17.2.0\URP Package Samples\LensFlares\Scripts\ScreenSpacePlacement.cs" />
+    <Compile Include="Assets\DOTS\LoadingManager.cs" />
     <Compile Include="Assets\Scrit Guidp\EscaladorGuido.cs" />
     <Compile Include="Assets\Samples\Universal Render Pipeline\17.2.0\URP Package Samples\RendererFeatures\DepthBlit\DepthBlitCopyDepthPass.cs" />
     <Compile Include="Assets\DOTS\traffict dots sistem\RouteID.cs" />

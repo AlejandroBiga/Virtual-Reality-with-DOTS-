@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/DOTS/menu.unity
     guid: ba53568c916e0f648a8bed8c5f512bfd
   - enabled: 1
+    path: Assets/DOTS/loadingscene.unity
+    guid: dce7ab50c71bc2d44b012b13f5a97b97
+  - enabled: 1
     path: Assets/Escenas/Lvl scene.unity
     guid: ef5e724dd8fc7594eb00eb31e4ef52e7
   m_configObjects:
