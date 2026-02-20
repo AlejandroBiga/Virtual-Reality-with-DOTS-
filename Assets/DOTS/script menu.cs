@@ -5,7 +5,7 @@ public class scriptmenu : MonoBehaviour
 {
    public void PlayButton()
     {
-        SceneManager.LoadScene("Lvl scene");
+        SceneManager.LoadScene("loadingscene");
     }
 
     public void OnApplicationQuit()

@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/DOTS/menu.unity
-    guid: ba53568c916e0f648a8bed8c5f512bfd
+    path: Assets/Escenas/menu.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
     path: Assets/DOTS/loadingscene.unity
     guid: dce7ab50c71bc2d44b012b13f5a97b97

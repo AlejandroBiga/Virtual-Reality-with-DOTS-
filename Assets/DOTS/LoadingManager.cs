@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class LoadingManager : MonoBehaviour
 {
-    public string sceneToLoad = "loadingscene";
+    public string sceneToLoad = "Lvl scene";
 
     void Start()
     {

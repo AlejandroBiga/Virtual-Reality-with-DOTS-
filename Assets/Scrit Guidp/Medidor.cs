@@ -2,104 +2,182 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class UIProtractor : MonoBehaviour
+public class ScrewAngleMeasurer : MonoBehaviour
 {
-    [Header("Measurement Points")]
-    [SerializeField] private Transform vertexPoint; // Center point of angle
-    [SerializeField] private Transform point1; // First ray point
-    [SerializeField] private Transform point2; // Second ray point
+    [Header("Objects to Measure")]
+    [SerializeField] private Transform screw; // The screw object
+    [SerializeField] private Transform plate; // The plate/surface object
+    
+    [Header("Measurement Settings")]
+    [SerializeField] private MeasurementMode mode = MeasurementMode.ScrewToPlateNormal;
+    [SerializeField] private bool updateContinuously = true;
     
     [Header("UI Elements")]
-    [SerializeField] private RectTransform protractorImage; // The protractor image
-    [SerializeField] private RectTransform line1; // Visual line to point1
-    [SerializeField] private RectTransform line2; // Visual line to point2
-    [SerializeField] private TextMeshProUGUI angleText; // Display angle value
-    [SerializeField] private RectTransform arcIndicator; // Optional arc to show angle
-    
-    [Header("Settings")]
-    [SerializeField] private bool updateContinuously = true;
+    [SerializeField] private RectTransform protractorImage;
+    [SerializeField] private RectTransform line1; // Plate reference line
+    [SerializeField] private RectTransform line2; // Screw angle line
+    [SerializeField] private TextMeshProUGUI angleText;
     [SerializeField] private Canvas canvas;
-    [SerializeField] private Camera mainCamera;
     
+    [Header("Visualization")]
+    [SerializeField] private bool showGizmos = true;
+    [SerializeField] private float gizmoSize = 0.05f;
+    
+    private Camera mainCamera;
     private float currentAngle = 0f;
+    
+    // Calculated points
+    private Vector3 intersectionPoint; // Where screw meets plate
+    private Vector3 plateReferencePoint; // Point along plate surface
+    private Vector3 screwDirectionPoint; // Point along screw axis
+    
+    public enum MeasurementMode
+    {
+        ScrewToPlateNormal,    // Angle between screw and plate's up vector (perpendicular)
+        ScrewToPlateForward,   // Angle between screw and plate's forward
+        ScrewToWorldUp,        // Angle between screw and world up (Y axis)
+        Custom                 // Manually set reference direction
+    }
 
     void Start()
     {
-        if (mainCamera == null)
-            mainCamera = Camera.main;
+        mainCamera = Camera.main;
     }
 
     void Update()
     {
         if (updateContinuously)
         {
-            CalculateAndDisplayAngle();
+            CalculateAngle();
+            UpdateVisuals();
         }
     }
 
-    public void CalculateAndDisplayAngle()
+    void CalculateAngle()
     {
-        if (vertexPoint == null || point1 == null || point2 == null)
+        if (screw == null || plate == null)
         {
-            Debug.LogWarning("Please assign all three points!");
+            Debug.LogWarning("Screw or Plate not assigned!");
             return;
         }
 
-        // Calculate angle between three points in 3D space
-        Vector3 direction1 = (point1.position - vertexPoint.position).normalized;
-        Vector3 direction2 = (point2.position - vertexPoint.position).normalized;
+        // Step 1: Find intersection point (where screw touches plate)
+        intersectionPoint = FindIntersectionPoint();
         
-        currentAngle = Vector3.Angle(direction1, direction2);
+        // Step 2: Get screw direction (its forward axis or custom)
+        Vector3 screwDirection = GetScrewDirection();
         
-        // Update angle text
+        // Step 3: Get plate reference direction (normal/perpendicular to surface)
+        Vector3 plateReference = GetPlateReference();
+        
+        // Step 4: Calculate angle between screw and plate reference
+        currentAngle = Vector3.Angle(screwDirection, plateReference);
+        
+        // Step 5: Calculate visualization points
+        screwDirectionPoint = intersectionPoint + screwDirection * 0.2f;
+        plateReferencePoint = intersectionPoint + plateReference * 0.2f;
+        
+        // Update text
         if (angleText != null)
         {
             angleText.text = $"{currentAngle:F1}°";
         }
-        
-        // Update visual elements
-        UpdateProtractorVisuals();
     }
 
-    private void UpdateProtractorVisuals()
+    Vector3 FindIntersectionPoint()
+    {
+        // Try to find where screw intersects with plate
+        
+        // Method 1: Raycast from screw along its axis to hit the plate
+        Collider plateCollider = plate.GetComponent<Collider>();
+        if (plateCollider != null)
+        {
+            Vector3 screwDirection = -screw.forward; // Assuming screw points down
+            Ray ray = new Ray(screw.position, screwDirection);
+            
+            if (plateCollider.Raycast(ray, out RaycastHit hit, 10f))
+            {
+                return hit.point;
+            }
+        }
+        
+        // Method 2: Project screw position onto plate surface
+        Vector3 plateNormal = plate.up;
+        Vector3 platePoint = plate.position;
+        Vector3 screwPos = screw.position;
+        
+        // Find closest point on plate plane
+        float distance = Vector3.Dot(plateNormal, screwPos - platePoint);
+        Vector3 projectedPoint = screwPos - plateNormal * distance;
+        
+        return projectedPoint;
+    }
+
+    Vector3 GetScrewDirection()
+    {
+        // The screw's main axis (usually forward or up depending on how it's oriented)
+        // Adjust this based on your screw's orientation
+        return -screw.forward; // Negative if screw points downward
+    }
+
+    Vector3 GetPlateReference()
+    {
+        switch (mode)
+        {
+            case MeasurementMode.ScrewToPlateNormal:
+                // Perpendicular to plate surface (most common for insertion angle)
+                return plate.up;
+                
+            case MeasurementMode.ScrewToPlateForward:
+                return plate.forward;
+                
+            case MeasurementMode.ScrewToWorldUp:
+                return Vector3.up;
+                
+            default:
+                return plate.up;
+        }
+    }
+
+    void UpdateVisuals()
     {
         if (mainCamera == null || canvas == null) return;
 
-        // Convert 3D positions to screen space
-        Vector2 screenVertex = WorldToCanvasPosition(vertexPoint.position);
-        Vector2 screenPoint1 = WorldToCanvasPosition(point1.position);
-        Vector2 screenPoint2 = WorldToCanvasPosition(point2.position);
+        // Convert 3D positions to screen/canvas positions
+        Vector2 screenIntersection = WorldToCanvasPosition(intersectionPoint);
+        Vector2 screenPlateRef = WorldToCanvasPosition(plateReferencePoint);
+        Vector2 screenScrewDir = WorldToCanvasPosition(screwDirectionPoint);
         
-        // Position protractor at vertex
+        // Position protractor at intersection
         if (protractorImage != null)
         {
-            protractorImage.anchoredPosition = screenVertex;
+            protractorImage.anchoredPosition = screenIntersection;
             
-            // Rotate protractor to align with first line
-            Vector2 dir = (screenPoint1 - screenVertex).normalized;
+            // Rotate protractor to align with plate reference
+            Vector2 dir = (screenPlateRef - screenIntersection).normalized;
             float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-            protractorImage.rotation = Quaternion.Euler(0, 0, angle - 90); // Adjust based on your image orientation
+            protractorImage.rotation = Quaternion.Euler(0, 0, angle - 90);
         }
         
         // Draw lines
         if (line1 != null)
         {
-            DrawLineBetweenPoints(line1, screenVertex, screenPoint1);
+            DrawLineBetweenPoints(line1, screenIntersection, screenPlateRef);
         }
         
         if (line2 != null)
         {
-            DrawLineBetweenPoints(line2, screenVertex, screenPoint2);
+            DrawLineBetweenPoints(line2, screenIntersection, screenScrewDir);
         }
         
         // Position angle text
         if (angleText != null)
         {
-            angleText.rectTransform.anchoredPosition = screenVertex + new Vector2(0, 50);
+            angleText.rectTransform.anchoredPosition = screenIntersection + new Vector2(0, 50);
         }
     }
 
-    private Vector2 WorldToCanvasPosition(Vector3 worldPosition)
+    Vector2 WorldToCanvasPosition(Vector3 worldPosition)
     {
         Vector2 screenPoint = RectTransformUtility.WorldToScreenPoint(mainCamera, worldPosition);
         
@@ -113,7 +191,7 @@ public class UIProtractor : MonoBehaviour
         return canvasPosition;
     }
 
-    private void DrawLineBetweenPoints(RectTransform line, Vector2 start, Vector2 end)
+    void DrawLineBetweenPoints(RectTransform line, Vector2 start, Vector2 end)
     {
         Vector2 direction = end - start;
         float distance = direction.magnitude;
@@ -125,18 +203,53 @@ public class UIProtractor : MonoBehaviour
         line.rotation = Quaternion.Euler(0, 0, angle);
     }
 
-    // Public method to set measurement points dynamically
-    public void SetMeasurementPoints(Transform vertex, Transform p1, Transform p2)
+    void OnDrawGizmos()
     {
-        vertexPoint = vertex;
-        point1 = p1;
-        point2 = p2;
-        CalculateAndDisplayAngle();
+        if (!showGizmos || screw == null || plate == null) return;
+
+        // Draw intersection point (RED)
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(intersectionPoint, gizmoSize);
+        
+        // Draw plate reference direction (GREEN)
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(intersectionPoint, plateReferencePoint);
+        Gizmos.DrawWireSphere(plateReferencePoint, gizmoSize * 0.7f);
+        
+        // Draw screw direction (CYAN)
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawLine(intersectionPoint, screwDirectionPoint);
+        Gizmos.DrawWireSphere(screwDirectionPoint, gizmoSize * 0.7f);
+        
+        // Draw angle arc
+        Gizmos.color = Color.yellow;
+        Vector3 plateRef = GetPlateReference();
+        Vector3 screwDir = GetScrewDirection();
+        
+        // Draw small arc to visualize angle
+        int steps = 10;
+        for (int i = 0; i < steps; i++)
+        {
+            float t1 = (float)i / steps;
+            float t2 = (float)(i + 1) / steps;
+            
+            Vector3 dir1 = Vector3.Slerp(plateRef, screwDir, t1);
+            Vector3 dir2 = Vector3.Slerp(plateRef, screwDir, t2);
+            
+            Gizmos.DrawLine(
+                intersectionPoint + dir1 * gizmoSize * 2f,
+                intersectionPoint + dir2 * gizmoSize * 2f
+            );
+        }
     }
 
-    // Get the current measured angle
-    public float GetCurrentAngle()
+    // Public methods
+    public float GetCurrentAngle() => currentAngle;
+    
+    public void SetObjects(Transform screwTransform, Transform plateTransform)
     {
-        return currentAngle;
+        screw = screwTransform;
+        plate = plateTransform;
+        CalculateAngle();
     }
 }

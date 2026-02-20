@@ -81,8 +81,10 @@
     <Compile Include="Assets\DOTS\LoadingManager.cs" />
     <Compile Include="Assets\Scrit Guidp\EscaladorGuido.cs" />
     <Compile Include="Assets\Samples\Universal Render Pipeline\17.2.0\URP Package Samples\RendererFeatures\DepthBlit\DepthBlitCopyDepthPass.cs" />
+    <Compile Include="Assets\Samples\XR Interaction Toolkit\3.2.2\XR Device Simulator\Scripts\XRDeviceSimulatorHandsUI.cs" />
     <Compile Include="Assets\DOTS\traffict dots sistem\RouteID.cs" />
     <Compile Include="Assets\Scrit Guidp\rotato.cs" />
+    <Compile Include="Assets\Samples\XR Interaction Toolkit\3.2.2\XR Device Simulator\Scripts\XRDeviceSimulatorUI.cs" />
     <Compile Include="Assets\DOTS\traffict dots sistem\RouteWaypoints.cs" />
     <Compile Include="Assets\Samples\Universal Render Pipeline\17.2.0\URP Package Samples\RendererFeatures\DistortTunnel\DistortTunnelRendererFeature.cs" />
     <Compile Include="Assets\Scrit Guidp\EscalaUI.cs" />
@@ -104,6 +106,7 @@
     <Compile Include="Assets\DOTS\traffict dots sistem\VehicleInitSystem.cs" />
     <Compile Include="Assets\Samples\Universal Render Pipeline\17.2.0\URP Package Samples\RendererFeatures\DepthBlit\DepthBlitDepthOnlyPass.cs" />
     <Compile Include="Assets\LudicWorlds\DebugPanel\DebugPanel.cs" />
+    <Compile Include="Assets\Samples\XR Interaction Toolkit\3.2.2\XR Device Simulator\Scripts\XRDeviceSimulatorControllerUI.cs" />
     <Compile Include="Assets\Samples\Universal Render Pipeline\17.2.0\URP Package Samples\RendererFeatures\DistortTunnel\DistortTunnelPass_CopyColor.cs" />
     <Compile Include="Assets\Scrit Guidp\Medidor.cs" />
     <Compile Include="Assets\DOTS\traffict dots sistem\VehicleMovementSystem.cs" />
@@ -115,9 +118,11 @@
     <Compile Include="Assets\DOTS\script menu.cs" />
     <Compile Include="Assets\DOTS\NPC dots system\NPCAnimationSpeed.cs" />
     <Compile Include="Assets\Samples\Universal Render Pipeline\17.2.0\URP Package Samples\RendererFeatures\KeepFrame\KeepFrameFeature.cs" />
+    <Compile Include="Assets\Scrit Guidp\HologramaAumentos.cs" />
     <Compile Include="Assets\Samples\Universal Render Pipeline\17.2.0\URP Package Samples\RendererFeatures\BlitToRTHandle\BlitToRTHandleRendererFeature.cs" />
     <Compile Include="Assets\DOTS\NPC dots system\NPCAnimationSystem.cs" />
     <Compile Include="Assets\DOTS\NPC dots system\NPCAnimationSpeed1.cs" />
+    <Compile Include="Assets\Scrit Guidp\ColorizerToggle.cs" />
     <Compile Include="Assets\Samples\Universal Render Pipeline\17.2.0\URP Package Samples\SharedAssets\Scripts\CheckAssignedRenderPipelineAsset.cs" />
     <Compile Include="Assets\Scrit Guidp\attacher.cs" />
     <Compile Include="Assets\DOTS\NPC dots system\NPCMovementSystem.cs" />
